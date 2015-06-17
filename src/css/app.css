@@ -5065,6 +5065,9 @@ a.text-#000000:hover {
           animation: movingbar 0.75s infinite;
 }
 
+.op_6 {
+  opacity: 0.6;
+}
 /* Moving bar */
 
 @-webkit-keyframes movingbar {
