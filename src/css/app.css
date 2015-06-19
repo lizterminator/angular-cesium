@@ -48,7 +48,18 @@ small,
 .small {
   font-size: 13px;
 }
-
+.fullWindow {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    /*bottom: -50px;*/
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    font-family: sans-serif;
+}
 .badge,
 .label {
   font-weight: bold;
