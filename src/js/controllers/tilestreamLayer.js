@@ -1,6 +1,6 @@
 angular.module('app')
-  .controller('tilestreamCtrl', ['$scope','$rootScope','$modal','layerManager','requestService',
-    function( $scope,$rootScope,$modal,layerManager,requestService ) {
+  .controller('tilestreamCtrl', ['$scope','$rootScope','$modal','layerManager','requestService','urlService',
+    function( $scope,$rootScope,$modal,layerManager,requestService,urlService) {
 
     	requestService.getLayers($scope);
     	//加载&&卸载图层
@@ -22,7 +22,8 @@ angular.module('app')
             if(!loadedLayer){
               var layer = new Cesium.ImageryLayer(
                 new Cesium.TileXYZImageryProvider({
-                  url: "http://localhost:8888/v2/"+layerName+"/{z}/{x}/{y}.png",
+                  //url: "http://192.168.3.98:8888/v2/"+layerName+"/{z}/{x}/{y}.png",
+                  url: urlService.tileStreamTileUrl.replace('{layerName}',layerName),
                   projectionType: schemaType==="SCHEMA_MERCATOR"?"Mercator":"GEO",
                   maximumLevel: 13,
                   minimumLevel: 8

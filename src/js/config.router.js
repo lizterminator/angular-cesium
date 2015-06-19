@@ -6,9 +6,14 @@
 
 
 angular.module('app')
-
-.service('requestService', function($http) {
-    var baseUrl = "http://localhost:8888/api/";
+.service('urlService',function(){
+  //请求瓦片的url
+  this.tileStreamTileUrl = "http://192.168.3.98:8888/v2/{layerName}/{z}/{x}/{y}.png";
+  //请求所有图层,图层元数据的url
+  this.tileStreamLayerUrl = "http://192.168.3.98:8888/api/";
+})
+.service('requestService', function($http,urlService) {
+    var baseUrl = urlService.tileStreamLayerUrl;
     this.getLayers = function($scope) {
       var url = baseUrl + "Tileset";
       $http.get(url).
