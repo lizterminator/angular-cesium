@@ -5,18 +5,19 @@ A small map app build with angular && Cesiumjs and work with tilestream
 ------
 ##Fetures:
 
-> * kml
+> * kml add. remove. show&search entities 
 > * tilestream layer add. remove. metadata
 > * terrain
-> * grid
+> * grid 
+> * mapThumbnail with hostspots
 
 ##Dependency:
 
 tilestream
 
 ##Useage
-
-http-server
+1. open your tilestream which can provide tiles.
+2. http-server
 
 
 
