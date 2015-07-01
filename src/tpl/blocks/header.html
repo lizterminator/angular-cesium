@@ -85,22 +85,22 @@
               </li>
             </ul>
           </li>
-          <li class="dropdown" dropdown ng-controller="kmlCtrl">
+          <li class="dropdown" dropdown ng-controller="situationCtrl">
             <a href class="dropdown-toggle" dropdown-toggle>
               <i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
-              <span >KML</span> <span class="caret"></span>
+              <span >态势</span> <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href ng-click="showKMLPanel()">加载</a></li>
+              <li><a href ng-click="showSituationPanel()">加载</a></li>
               <li>
-                <a href ng-click="removeKML()">
+                <a href ng-click="removeSituation()">
                   <span >移除</span>
                 </a>
               </li>
               <li class="divider"></li>
               <li>
-                <a href ng-click="listKML()">
-                  <span class="badge bg-danger pull-right">{{kmlSize || 0}}</span>
+                <a href ng-click="listSituation()">
+                  <span class="badge bg-danger pull-right">{{sSize || 0}}</span>
                   <span >列表</span>
                 </a>
               </li>

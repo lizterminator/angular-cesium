@@ -46,16 +46,20 @@ angular.module('app')
       //视点切换函数,之后要的做就是把height作为当前的
       $scope.fly = function(index) {
         var p = $scope.hotspots[index];
-        var height = 
+        //var height = ($rootScope.viewer.camera.frustum.right - $rootScope.viewer.camera.frustum.left) * 0.5;
         $rootScope.viewer.camera.flyTo({
           destination: Cesium.Cartesian3.fromDegrees(p.lon, p.lat, p.height)
         });
       }
 
-      
 
+      $scope.rotate = "rotate(90deg)";
+      var t = $rootScope.viewer.camera.direction;
+      console.log($rootScope.viewer.camera.direction);
+      console.log($rootScope.viewer.camera.directionWC);
+      console.log($rootScope.viewer.camera.worldToCameraCoordinatesPoint(t));
       //若要关闭功能,注释(1),打开(2)
-      Thumbnail();                //(1)
+      Thumbnail(); //(1)
       //$scope.hotspots = [];     //(2)
 
     }

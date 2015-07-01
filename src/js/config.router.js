@@ -33,22 +33,22 @@ angular.module('app')
       });
     };
   })
-  .service('kmlService', function() {
-    var kmlDataSource = null;
+  .service('situationService', function() {
+    var dataSource = null;
     this.add = function(source) {
-      kmlDataSource = source;
+      dataSource = source;
     }
     this.show = function() {
-      console.log(kmlDataSource.entities.values);
+      console.log(dataSource.entities.values);
     }
     this.removeAll = function() {
-      kmlDataSource = null;
+      dataSource = null;
     }
     this.size = function() {
-      return kmlDataSource.entities.values.length;
+      return dataSource.entities.values.length;
     }
     this.getEntities = function(start, end) {
-      return kmlDataSource.entities.values.slice(start, end);;
+      return dataSource.entities.values.slice(start, end);;
     }
   })
   .service('layerManager', function() {
