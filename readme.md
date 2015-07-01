@@ -3,7 +3,7 @@
 
 A small map app build with angular && Cesiumjs and work with tilestream 
 ------
-##Fetures:
+##Features:
 
 > * situation including kml/geojson/czml add. remove. show&search entities 
 > * tilestream layer add. remove. metadata
