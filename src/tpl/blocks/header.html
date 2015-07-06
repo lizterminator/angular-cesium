@@ -29,13 +29,13 @@
         <!-- / buttons -->
 
         <!-- link and dropdown -->
-        <ul class="nav navbar-nav hidden-sm">
+        <ul class="nav navbar-nav hidden-sm" ng-controller="configCtrl">
           <li>
-            <a ui-sref="index.portal">
-                <span>地图</span>
+            <a ng-click="showConfigPanel()">
+                <span>配置</span>
             </a>
           </li>
-          <li class="dropdown" dropdown >
+          <!-- <li class="dropdown" dropdown >
               <a href class="dropdown-toggle" dropdown-toggle>
                   <i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
                   <span>所有图层</span> <span class="caret"></span>
@@ -44,14 +44,14 @@
                   <li><a >A</a></li>
                   <li>
                       <a >
-                          <!-- <span class="badge bg-info pull-right">5</span> -->
+                          <span class="badge bg-info pull-right">5</span>
                           <span>B</span>
                       </a>
                   </li>
                   <li class="divider"></li>
                   <li><a >C</a></li>
               </ul>
-          </li>
+          </li> -->
         </ul>
         <!-- / link and dropdown -->
 

@@ -28,6 +28,9 @@ angular.module('app')
     this.defaultSituationUrl = config.defaultSituationUrl;
     this.defaultHotspotsUrl = config.defaultHotspotsUrl;
     
+    this.config = function(key,value){
+      this[key] = value;
+    }
     //console.log(that,this);
     //请求瓦片的url
     //this.tileStreamTileUrl = "http://localhost:8888/v2/{layerName}/{z}/{x}/{y}.png";
