@@ -35,7 +35,7 @@
                 <span>地图</span>
             </a>
           </li>
-          <li class="dropdown" dropdown ng-show="!isLogin">
+          <li class="dropdown" dropdown >
               <a href class="dropdown-toggle" dropdown-toggle>
                   <i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
                   <span>所有图层</span> <span class="caret"></span>
@@ -75,7 +75,7 @@
               <span>TileStream图层</span> 
               <span class="caret"></span>
             </a>
-            <ul class="dropdown-menu" role="menu">
+            <ul class="dropdown-menu" role="menu" ng-if="layers.length">
               <li ng-repeat="layer in layers"> 
 
                   <button class="btn btn-default" style="width:150px" ng-class="{false:'',true:'btn-success'}[layer.loaded]" ng-click="toggleLayer($index)" title="{{layer.tip}}"> {{layer.name}}</button>
@@ -84,7 +84,25 @@
                   <button class="btn btn-default" ng-click="moveViewToLayer($index)"> 定位到图层</button>
               </li>
             </ul>
+            <ul class="dropdown-menu" role="menu" ng-if="!layers.length">
+              <li class="text-danger">请先开启tilestream</li>
+            </ul>
           </li>
+          <li class="dropdown" dropdown ng-controller="thumbCtrl">
+            <a href class="dropdown-toggle" dropdown-toggle>
+              <i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
+              <span >缩略图</span> <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href ng-click="toggle()">开关</a></li>
+              <li>
+                <a href ng-click="addHotspot()">
+                  增加热点
+                </a>
+              </li>
+            </ul>
+          </li>
+
           <li class="dropdown" dropdown ng-controller="situationCtrl">
             <a href class="dropdown-toggle" dropdown-toggle>
               <i class="fa fa-fw fa-plus visible-xs-inline-block"></i>
@@ -129,10 +147,4 @@
 
       </div>
       <!-- / navbar collapse -->
-  <script type="text/ng-template" id="metaDataModal.html">
-    <div ng-include="'tpl/metaDataModal.html'"></div>
-  </script>
-
-  <script type="text/ng-template" id="kmlSelectModal.html">
-    <div ng-include="'tpl/kmlSelectModal.html'"></div>
-  </script>
+  

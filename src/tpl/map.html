@@ -2,9 +2,9 @@
    <div id="map" class="fullWindow"></div>
 </div>
 
-<div id="thumb" ng-controller="thumbCtl">
+<div id="thumb" ng-controller="thumbCtrl" >
 	<div ng-repeat="hotspot in hotspots">
-		<a ng-click="fly($index)" ng-style="{'left': hotspot.left,'bottom':hotspot.bottom}" class="round" >●</a>
+		<a ng-click="fly($index)" ng-style="{'left': hotspot.left,'bottom':hotspot.bottom}" class="round" title="{{hotspot.des}}">●</a>
 	</div>
 	<button type="button" class="rotateBtn" title="reset rotate">
 		<span class="rotateArrow" ng-style="{'transform':rotate, '-webkit-transform':rotate,'-ms-transform':rotate}">⇧</span>

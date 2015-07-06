@@ -6,11 +6,33 @@
 
 
 angular.module('app')
-  .service('urlService', function() {
+  .service('urlService', function($rootScope,$http) {
+
+    $.ajax({
+      url: "../config/config.json",
+      method: 'GET',
+      dataType: 'json',
+      async: false
+    })
+    .success(function(data){
+      // console.log(data);
+      $rootScope.appConfig = data;
+      
+    }).error(function(){
+      alert('请检查配置文件 config->config.json');
+    });
+
+    var config = $rootScope.appConfig;
+    this.tileStreamTileUrl = config.tileStreamTileUrl;
+    this.tileStreamLayerUrl = config.tileStreamLayerUrl;
+    this.defaultSituationUrl = config.defaultSituationUrl;
+    this.defaultHotspotsUrl = config.defaultHotspotsUrl;
+    
+    //console.log(that,this);
     //请求瓦片的url
-    this.tileStreamTileUrl = "http://localhost:8888/v2/{layerName}/{z}/{x}/{y}.png";
+    //this.tileStreamTileUrl = "http://localhost:8888/v2/{layerName}/{z}/{x}/{y}.png";
     //请求所有图层,图层元数据的url
-    this.tileStreamLayerUrl = "http://localhost:8888/api/";
+    // this.tileStreamLayerUrl = "http://localhost:8888/api/";
   })
   .service('requestService', function($http, urlService) {
     var baseUrl = urlService.tileStreamLayerUrl;
@@ -20,6 +42,8 @@ angular.module('app')
       success(function(data, status, headers, config) {
         $scope.layers = data;
 
+      }).error(function(){
+        $scope.layers = [];
       });
     };
 
@@ -81,7 +105,7 @@ angular.module('app')
       function($stateProvider, $urlRouterProvider) {
 
         $urlRouterProvider
-          .otherwise('/app/map/120/30/10000000'); //默认经纬度，高度
+          .otherwise('/app/map/114/30/10000000'); //默认经纬度，高度
         $stateProvider
           .state('app', {
             abstract: true,
@@ -100,7 +124,8 @@ angular.module('app')
                 timeline: false,
                 navigationHelpButton: false,
                 geocoder: true,
-                animation: false
+                animation: false,
+                sceneMode:Cesium.SceneMode.SCENE3D
               });
               $('.cesium-infoBox-title').addClass('text-danger text-md');
               $rootScope.imageryLayers = viewer.scene.imageryLayers;
@@ -113,7 +138,8 @@ angular.module('app')
                 var lat = matched.lat;
                 var height = parseFloat(matched.height);
                 $rootScope.viewer.camera.flyTo({
-                  destination: Cesium.Cartesian3.fromDegrees(lon, lat, height)
+                  destination: Cesium.Cartesian3.fromDegrees(lon, lat, height),
+                  duration: 0
                 });
 
               });
@@ -122,7 +148,8 @@ angular.module('app')
               var lat = $stateParams.lat;
               var height = parseFloat($stateParams.height);
               viewer.camera.flyTo({
-                destination: Cesium.Cartesian3.fromDegrees(lon, lat, height)
+                destination: Cesium.Cartesian3.fromDegrees(lon, lat, height),
+                duration: 0
               });
             }
           })

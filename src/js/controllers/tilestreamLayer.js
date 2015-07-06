@@ -3,6 +3,7 @@ angular.module('app')
     function( $scope,$rootScope,$modal,layerManager,requestService,urlService) {
 
     	requestService.getLayers($scope);
+
     	//加载&&卸载图层
       $scope.toggleLayer = function(index){
         var layer = $scope.layers[index];

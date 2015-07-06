@@ -1,9 +1,8 @@
 angular.module('app')
-  .controller('situationCtrl', ['$scope', '$rootScope', '$modal', '$aside', 'situationService',
+  .controller('situationCtrl', ['$scope', '$rootScope', '$modal', '$aside','situationService',
     function($scope, $rootScope, $modal, $aside, situationService) {
 
-      //KML
-      //
+      //situation
       var situationModal; //输入kml地址的模态框
       var rootEntities = []; //全部的entities
       var shownEntities = []; //显示的entities
@@ -11,7 +10,7 @@ angular.module('app')
       var SHOW_SITUATION_SIZE = 20;
 
       //$scope.situationUrl = "http://localhost:8082/KML/facilities/facilities.kml";
-      $scope.situationUrl = "http://localhost:8082/simple.czml";
+      $scope.situationUrl = $rootScope.appConfig.defaultSituationUrl; //"http://localhost:8082/simple.czml";
       $scope.loadSituation = function() {
 
         var url = angular.element('#situationUrl').val();
