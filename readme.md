@@ -17,7 +17,8 @@ tilestream
 
 ##Useage
 1. open your tilestream which can provide tiles.
-2. http-server
+2. run it with http-server or any other web server
+3. now you can run it with node-webkit
 
 
 
